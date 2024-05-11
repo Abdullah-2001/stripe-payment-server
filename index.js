@@ -1,9 +1,11 @@
 const express = require('express');
 const stripe = require('stripe')('sk_test_51PDL8U2Kb7CbmLKZMkr3y0z0UvvfgUIfLmOzyzdMSm21AngkQwExQDX6G6dKKK3YohhdkLZaidXlNpFMfJWjLwis00PMjJZvvB');
+const cors = require('cors')
 
 const app = express();
 const PORT = 5000;
 app.use(express.json());
+app.use(cors())
 
 // Endpoint to create a payment intent
 app.post('/create-payment-intent', async (req, res) => {
