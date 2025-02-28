@@ -1,50 +1,3 @@
-// const express = require('express');
-// const stripe = require('stripe')('sk_test_51PDL8U2Kb7CbmLKZMkr3y0z0UvvfgUIfLmOzyzdMSm21AngkQwExQDX6G6dKKK3YohhdkLZaidXlNpFMfJWjLwis00PMjJZvvB');
-// // const stripe = require('stripe')('pk_test_51NApxXIoVTypr6KdA1uTeWKHJy16NBImQ3KsEFfinxaDTVu3RlnOFpYWStrnHiiQza5QBVEn50mtERCcyPtQC4VM000GBZXhAo');
-// const cors = require('cors')
-
-// const app = express();
-// const PORT = 5000;
-// app.use(express.json());
-// app.use(cors())
-
-// // Endpoint to create a payment intent
-// app.post('/create-payment-intent', async (req, res) => {
-//     console.log(req);
-
-//     try {
-//         const { amount, currency, metadata } = req.body;
-//         const paymentIntent = await stripe.paymentIntents.create({ amount, currency, metadata });
-//         res.status(200).json({ client_secret: paymentIntent.client_secret });
-//     } catch (error) {
-//         console.error('Error creating payment intent:', error);
-//         res.status(500).json({ error: 'Internal server error' });
-//     }
-// });
-
-// app.post('/process-payment', async (req, res) => {
-//     const { paymentMethodId } = req.body;
-
-//     try {
-//         const paymentIntent = await stripe.paymentIntents.create({
-//             payment_method: paymentMethodId,
-//             amount: 100, // Amount in cents
-//             currency: 'usd',
-//             confirmation_method: 'manual',
-//             confirm: true,
-//         });
-//         // Handle successful payment here
-//         res.status(200).json({ success: true });
-//     } catch (error) {
-//         console.error('Error processing payment:', error);
-//         res.status(500).json({ error: 'Failed to process payment' });
-//     }
-// });
-
-// app.listen(PORT, () => {
-//     console.log('Server is running on port 5000');
-// });
-
 const express = require('express');
 const cors = require('cors');
 const stripe = require('stripe')('sk_test_51NApxXIoVTypr6KdwEEqcntQ4WS1iQKbA3qdUbapYg6ThleHSJnzN4FO0nJgJEYKcIye7EDkSOsD4rJaJV4wd1sT00KUFvnHmx');
@@ -52,14 +5,14 @@ const stripe = require('stripe')('sk_test_51NApxXIoVTypr6KdwEEqcntQ4WS1iQKbA3qdU
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Set to '*' if testing, but specify frontend URL for production
+    origin: 'https://gearhire.live', // Set to '*' if testing, but specify frontend URL for production
     methods: 'GET,POST,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
 }));
 
 app.use(express.json()); // ✅ Important: Parse JSON body requests
 
-const YOUR_DOMAIN = 'http://localhost:3000';
+const YOUR_DOMAIN = 'https://gearhire.live';
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
