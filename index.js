@@ -5,14 +5,14 @@ const stripe = require('stripe')('sk_test_51NApxXIoVTypr6KdwEEqcntQ4WS1iQKbA3qdU
 const app = express();
 
 app.use(cors({
-    origin: 'https://gearhire.live', // Set to '*' if testing, but specify frontend URL for production
+    origin: 'https://gearhire.live/', // Set to '*' if testing, but specify frontend URL for production
     methods: 'GET,POST,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
 }));
 
 app.use(express.json()); // ✅ Important: Parse JSON body requests
 
-const YOUR_DOMAIN = 'https://gearhire.live';
+const YOUR_DOMAIN = 'https://gearhire.live/';
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
